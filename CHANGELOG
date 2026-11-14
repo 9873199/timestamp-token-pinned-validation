@@ -1,6 +1,19 @@
 Changelog
 =========
 
+2.1.4 (unreleased)
+------------------
+
+- Add strict timestamp verification: ``check_timestamp_strict()`` and the
+  ``strict=True`` mode of ``RemoteTimestamper`` bind the token to a pinned
+  TSA certificate (issuer/serial, genTime validity, critical
+  timeStamping-only EKU, digitalSignature key usage, no CA certificates),
+  require exactly one SignerInfo with well-formed signed attributes
+  (single-valued contentType/messageDigest matching the TSTInfo), only
+  accept RSA PKCS#1 v1.5 with SHA-256/384/512, match nonce/message
+  imprint/policy against the request, and reject trailing DER data.
+
+
 2.1.3
 -----
 

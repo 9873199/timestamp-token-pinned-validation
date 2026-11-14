@@ -82,6 +82,33 @@ Alternatively you can just save the raw `response.content` returned from the cer
 
 There is a test which also covers this in `test_verify_timestamp_response_with_openssl`.
 
+Strict verification
+===================
+
+The default ``check_timestamp`` only checks that *some* signature verifies.
+Strict verification additionally binds the token to a TSA certificate pinned
+by the caller: the signer must be identified by that certificate's
+issuer/serial, the certificate must be valid at ``genTime`` and carry a
+critical Extended Key Usage of exactly ``id-kp-timeStamping`` (CA
+certificates are rejected), the token must hold exactly one ``SignerInfo``
+with well-formed signed attributes (single-valued ``contentType`` and
+``messageDigest`` matching the TSTInfo), only RSA PKCS#1 v1.5 with
+SHA-256/384/512 is accepted, and the nonce, message imprint and policy must
+match the request. Certificates embedded in the token are never trusted.
+
+    >>> import rfc3161ng
+    >>> certificate = open('data/certum_certificate.crt', 'rb').read()
+    >>> rfc3161ng.check_timestamp_strict(tst, certificate, data=b'John Doe',
+    ...                                  hashname='sha256', nonce=nonce)
+    True
+
+The same rules can be enabled on ``RemoteTimestamper`` with ``strict=True``
+(verification then also applies to the ``return_tsr=True`` path):
+
+    >>> rt = rfc3161ng.RemoteTimestamper('http://time.certum.pl', certificate=certificate,
+    ...                                  hashname='sha256', strict=True)
+    >>> tst = rt.timestamp(data=b'John Doe', nonce=nonce)
+
 
 Authors
 =======
