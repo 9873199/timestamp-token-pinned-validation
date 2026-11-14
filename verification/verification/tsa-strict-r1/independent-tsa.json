@@ -1,0 +1,20 @@
+{
+  "time": "2026-11-14T21:55:29+08:00",
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\env\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1/test_tsa_strict_review.py",
+    "-s",
+    "-o",
+    "addopts=",
+    "-o",
+    "cache_dir=D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1/pytest-cache"
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\replay-source",
+  "exit_code": 1,
+  "stdout_log": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\independent-tsa.stdout.log",
+  "stderr_log": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\independent-tsa.stderr.log"
+}

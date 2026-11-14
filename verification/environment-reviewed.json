@@ -1,0 +1,36 @@
+{
+  "time": "2026-11-14T22:02:40+08:00",
+  "uid": 1879,
+  "container": false,
+  "actual": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\env\\Scripts\\python.exe",
+    "modules": {
+      "rfc3161ng": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\replay-source\\rfc3161ng\\__init__.py",
+      "rfc3161ng.api": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\replay-source\\rfc3161ng\\api.py"
+    }
+  },
+  "dependency_lock": "certifi==2026.10.23\ncffi==2.1.1\ncharset-normalizer==3.5.2\ncolorama==0.4.6\ncryptography==50.0.2\nidna==3.20\niniconfig==2.3.1\npackaging==26.3\npluggy==1.7.0\npyasn1==0.6.5\npyasn1_modules==0.4.2\npycparser==3.12\nPygments==2.21.0\npytest==9.2.0\npython-dateutil==4.0.0\nrequests==2.34.2\ntzdata==2026.6\nurllib3==2.8.0\n",
+  "dependency_environment": "Reused the task dependency environment; exact pip freeze retained",
+  "frozen_source_import_verified": true,
+  "external_runtime_services": [],
+  "environment_limits": [
+    "Requests.post is replaced only in reviewer helpers with generated offline signed responses; no publicTSA or external service.",
+    "Full upstream test_api network cases excluded; two named offline cases actually executed."
+  ],
+  "task_preparation": {
+    "time": "2026-11-14T16:27:54+08:00",
+    "status": "ENV_READY",
+    "python": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\env\\Scripts\\python.exe",
+    "source_path": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\sources\\rfc3161ng\\src;D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\sources\\rfc3161ng",
+    "environment_directory": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\environment-r2",
+    "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\sources\\rfc3161ng",
+    "dependencies_lock": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\environment-r2\\dependencies-lock.stdout.log",
+    "external_services": false,
+    "containerized": false,
+    "clean": true,
+    "baseline_evidence": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\environment-r2\\baseline.json",
+    "upstream_scope_note": "Retry dependency download timeout; only explicitly offline upstream tests selected, external TSA tests excluded.",
+    "earlier_attempts_retained": true
+  }
+}

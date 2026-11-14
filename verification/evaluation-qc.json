@@ -1,0 +1,16 @@
+{
+  "time": "2026-11-14T22:02:40+08:00",
+  "reviewer": "Codex primary AI-assisted offline timestamp reviewer",
+  "status": "PRIMARY_REVIEW_PASSED_AWAITING_USER_REVIEW",
+  "score": 3,
+  "score_basis": "Main pinned CMS verifier is usable and passes broad signature/authorization/structure controls, but the standard Remote per-call policy parameter is not carried to response verification. An authentic yet request-inconsistent timestamp is accepted in both return modes; this is a substantive explicit request-binding gap needing code correction, not an engineering/network error. Four failures share one cause. Reviewer exception-type assertion is excluded.",
+  "checks": {
+    "observable_actions_reviewed": true,
+    "product_requirement_mapping_reviewed": true,
+    "process_and_product_facts_verified": true,
+    "score_feedback_consistency_checked": true,
+    "non_product_errors_excluded": true,
+    "semantic_diversity_checked": true
+  },
+  "official_project_acceptance": "NOT_CLAIMED"
+}

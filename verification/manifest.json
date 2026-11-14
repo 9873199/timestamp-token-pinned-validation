@@ -1,0 +1,263 @@
+{
+  "created": "2026-11-14T22:02:40+08:00",
+  "reviewed": true,
+  "reviewer": "Codex primary AI-assisted offline timestamp reviewer",
+  "uid": 1879,
+  "frozen_commit": "025a190cefe347d2444f2c732e64d520ab8de381",
+  "native_trajectory_sha256": "9a413d06976c7427b59285cb1a2df2973ffc90fd523b7f7ef37fa70a458d49c8",
+  "files": [
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\freeze.json",
+      "path": "freeze.json",
+      "sha256": "18b3d28e54c3b585f4650b051b233e70979b5f6d468984ee23628fb042487134"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\freeze-audit.json",
+      "path": "freeze-audit.json",
+      "sha256": "cd2fe49b206e0e8f2f3a3ce4443b6298818a3518f02c0b10b88692952e14d95a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\environment-reviewed.json",
+      "path": "environment-reviewed.json",
+      "sha256": "e9d921e85d5ce740ed3ab6283ff21cefcc93692dc4630bd884a3527bac3c9ff4"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\evidence-map.json",
+      "path": "evidence-map.json",
+      "sha256": "0b192c13f29f976d0c1866dd61770ce240ce332b28fed046657d4b6d3e8646ba"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\model-final-answer.txt",
+      "path": "model-final-answer.txt",
+      "sha256": "f09de89cf6ff3039245d15adec9244d9a275ab3bb88a11efdc7913084477c03a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\test-results.json",
+      "path": "test-results.json",
+      "sha256": "1bb8a1bfc685bee0b97a37aad558b20e9a30a7810222fc342d07674a7572c930"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\evaluation-qc.json",
+      "path": "evaluation-qc.json",
+      "sha256": "e4b69f6059a519a14c2ec805b268a809a90d6d1d8c3db9818c4ee09e597ca3b5"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\recorded-runtime-r1\\actual-commands.json",
+      "path": "verification/recorded-runtime-r1/actual-commands.json",
+      "sha256": "d07738ae143d968b79f93e7a25f58751d64bb73a7e6036673336c37edf4ff459"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\recorded-runtime-r1\\actual-keystrokes.json",
+      "path": "verification/recorded-runtime-r1/actual-keystrokes.json",
+      "sha256": "37eecb11c50796043263e24a2fcef327cb8b059dfcf7797ea61d3c797bdcf035"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\recorded-runtime-r1\\recording-status.json",
+      "path": "verification/recorded-runtime-r1/recording-status.json",
+      "sha256": "72451e55a3cb33e683aee503a80fcb47b268b11fadc1f559ce841be58d6518ad"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\recorded-runtime-r1\\runtime-output.log",
+      "path": "verification/recorded-runtime-r1/runtime-output.log",
+      "sha256": "1914fa923d1b7a8b95364d217f26a7b8ac5b41bba0675fbe5cff3357b1d6fbd6"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\recorded-runtime-r1\\spec.json",
+      "path": "verification/recorded-runtime-r1/spec.json",
+      "sha256": "01a713ac7a58f865822ade5b34aa9acb00d5e853a188bef7f568b5fd33efe494"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\recorded-runtime-r1\\typing-check.json",
+      "path": "verification/recorded-runtime-r1/typing-check.json",
+      "sha256": "71552f3ce1291a6c504e92f3f0ee602fba546e2f9b338cdabec8b85a56bef88f"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\actual-import.json",
+      "path": "verification/tsa-der-rejection-r2/actual-import.json",
+      "sha256": "63b4535780ef7624a4714e4069ef98ec0fb8d9845f1d7556102b0c63c59138e9"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\actual-import.stderr.log",
+      "path": "verification/tsa-der-rejection-r2/actual-import.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\actual-import.stdout.log",
+      "path": "verification/tsa-der-rejection-r2/actual-import.stdout.log",
+      "sha256": "806a395dcacb0d91ec1b34e6e720ab50414b3612b48d7e264370c28f973b50c1"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\dependency-lock.json",
+      "path": "verification/tsa-der-rejection-r2/dependency-lock.json",
+      "sha256": "455923ad7545fdc7735c74dedc646689e3bd3a6ca31e6aa68131a73d04631c46"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\dependency-lock.stderr.log",
+      "path": "verification/tsa-der-rejection-r2/dependency-lock.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\dependency-lock.stdout.log",
+      "path": "verification/tsa-der-rejection-r2/dependency-lock.stdout.log",
+      "sha256": "50f1835d8d572116452508803e9d0b386ecd17feaaf5e63fde91dcd32bdd29c9"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\der-rejection-corrected.json",
+      "path": "verification/tsa-der-rejection-r2/der-rejection-corrected.json",
+      "sha256": "750c75553e20ba9004e836d4395f81f7cb6ba089eb49daf6bd0d9620a5fc5b0a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\der-rejection-corrected.stderr.log",
+      "path": "verification/tsa-der-rejection-r2/der-rejection-corrected.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\der-rejection-corrected.stdout.log",
+      "path": "verification/tsa-der-rejection-r2/der-rejection-corrected.stdout.log",
+      "sha256": "38c397d3b9f9b50a007438809304dd8c6e018fb93b909cba8d888f996da74814"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\replay-proof.json",
+      "path": "verification/tsa-der-rejection-r2/replay-proof.json",
+      "sha256": "967e57906f16234fff912601ff42daf26965b33dae9a97109190fbe1f9c438e1"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\reviewed-spec.json",
+      "path": "verification/tsa-der-rejection-r2/reviewed-spec.json",
+      "sha256": "3ee26503549419daf60c55cf8066e0bb548d9eb2bec76fba541e2c8c0900cf6e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\test_tsa_strict_review_r2.py",
+      "path": "verification/tsa-der-rejection-r2/test_tsa_strict_review_r2.py",
+      "sha256": "a78b03c529082e827fde099c05d7b850f3d0d38435c84503f70144482a301e3e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\tsa_review_fixtures.py",
+      "path": "verification/tsa-der-rejection-r2/tsa_review_fixtures.py",
+      "sha256": "2907b9f055d935dbeaff3efbb067773cdb4f00a9a5aef08cc7637afdf5509681"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\acceptance-contract-review.json",
+      "path": "verification/tsa-strict-r1/acceptance-contract-review.json",
+      "sha256": "e171f0730888aacd5dbb2f9a88dcc826c6ecc19d0231de5e02e4f8841144e681"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\actual-import.json",
+      "path": "verification/tsa-strict-r1/actual-import.json",
+      "sha256": "45a98c71de4029146cfef40dc909ad3bb8f091d1ce179d93457b292c1ee8dfce"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\actual-import.stderr.log",
+      "path": "verification/tsa-strict-r1/actual-import.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\actual-import.stdout.log",
+      "path": "verification/tsa-strict-r1/actual-import.stdout.log",
+      "sha256": "035681752b2a24c24c13141580a0111e47a7f69c87cb9116bee40b1800b6bd01"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\demo.py",
+      "path": "verification/tsa-strict-r1/demo.py",
+      "sha256": "5ed51e474b7eb902f37aebda2a4124972a8b0b16a726cea81b85cb9ab6f67431"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\dependency-lock.json",
+      "path": "verification/tsa-strict-r1/dependency-lock.json",
+      "sha256": "2e17e3dfb0bf345c808c16d7c1a6913347e14539e6ca08151b2b4725ce6a0593"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\dependency-lock.stderr.log",
+      "path": "verification/tsa-strict-r1/dependency-lock.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\dependency-lock.stdout.log",
+      "path": "verification/tsa-strict-r1/dependency-lock.stdout.log",
+      "sha256": "50f1835d8d572116452508803e9d0b386ecd17feaaf5e63fde91dcd32bdd29c9"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\independent-tsa.json",
+      "path": "verification/tsa-strict-r1/independent-tsa.json",
+      "sha256": "54811d3ba206a5a9e4a6e02bed9182fabf3c2bd9a75dd4fec78bacb81e0f0a80"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\independent-tsa.stderr.log",
+      "path": "verification/tsa-strict-r1/independent-tsa.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\independent-tsa.stdout.log",
+      "path": "verification/tsa-strict-r1/independent-tsa.stdout.log",
+      "sha256": "b7a0cf10d579cb9bb01547352b6d711fedb12f7e2e41f6e3bf0393c57c4577c8"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\model-strict.json",
+      "path": "verification/tsa-strict-r1/model-strict.json",
+      "sha256": "669617ec908e5fbb27510bd79f1729a1600a5f3fdec9dd4ef83ad9f2afd7997f"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\model-strict.stderr.log",
+      "path": "verification/tsa-strict-r1/model-strict.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\model-strict.stdout.log",
+      "path": "verification/tsa-strict-r1/model-strict.stdout.log",
+      "sha256": "2f8e18315b478e6525668c35bdbc81b5213796a28e4c38cbbe02a92b9af9e48c"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\replay-proof.json",
+      "path": "verification/tsa-strict-r1/replay-proof.json",
+      "sha256": "59f27af69fcf16087377da6c324c5a6f0aa3805be558c912cdf903f1859b9652"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\reproduction-notes.md",
+      "path": "verification/tsa-strict-r1/reproduction-notes.md",
+      "sha256": "2cc62a6625db9ee42434a276eecd0e29314ab7a911b79c914b32017383d81e1a"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\reviewed-spec.json",
+      "path": "verification/tsa-strict-r1/reviewed-spec.json",
+      "sha256": "421cd8d1a40cdb693474e96c320389e9c2c564b265bf75fa8ed98dde2ab9a389"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\test_tsa_strict_review.py",
+      "path": "verification/tsa-strict-r1/test_tsa_strict_review.py",
+      "sha256": "dec8622a72bd257619ddad5c0cb513724f33318c8402bb02aa9b4839cee7b4d2"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\tsa_review_fixtures.py",
+      "path": "verification/tsa-strict-r1/tsa_review_fixtures.py",
+      "sha256": "2907b9f055d935dbeaff3efbb067773cdb4f00a9a5aef08cc7637afdf5509681"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\upstream-offline.json",
+      "path": "verification/tsa-strict-r1/upstream-offline.json",
+      "sha256": "8ed9f0135a02364ce7787907e3990947b103e805e807f9448735937be898b282"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\upstream-offline.stderr.log",
+      "path": "verification/tsa-strict-r1/upstream-offline.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\upstream-offline.stdout.log",
+      "path": "verification/tsa-strict-r1/upstream-offline.stdout.log",
+      "sha256": "e2fcbb732a1c3c6b950eca2aa4d062200535b4452c85e90035a059726b672e2d"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-strict-r1\\pytest-cache\\README.md",
+      "path": "verification/tsa-strict-r1/pytest-cache/README.md",
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\pytest-cache\\README.md",
+      "path": "verification/tsa-der-rejection-r2/pytest-cache/README.md",
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad"
+    }
+  ],
+  "reproduction_readme": "# Pinned timestamp strict verification\n\nPost-session AI-assisted verification, separate from model tests. Python3.14.3. Offline generated RSA2048 TSA keys remain in memory. All fixtures are newly signed and independently verified with cryptography. PYTHONPATH must contain matching frozen source and verification/tsa-strict-r1. python -B -m pytest -q -s test_tsa_strict_review.py records46 pass,4 genuine per-call policy binding failures and1 reviewer exception-type expectation error. The malformed-DER case was actually rejected by PyAsn1Error; prompt imposes no ValueError-only contract. The unchanged frozen code passes its corrected focused check in tsa-der-rejection-r2. Thus51 unique reviewed cases:47 pass and4 failures of one root cause; original failed output retained. Model suite42 pass; explicit offline upstream2 pass, scopes not summed. No public TSA accessed. Mock post captures actual DER request policy, valid token has different policy; direct strict explicitly rejects that token for the requested policy, while Remote accepts with constructorNone or old policy and both return modes. The recording demo is reviewer support, not model code, and prints real failures with exit1. No source or native trajectory edits.\n\nNo automatic submission; user review required.\n",
+  "no_model_source_edits": true,
+  "native_trace_included": false
+}

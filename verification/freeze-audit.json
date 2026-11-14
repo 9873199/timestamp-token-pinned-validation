@@ -1,0 +1,28 @@
+{
+  "time": "2026-11-14T21:49:28+08:00",
+  "uid": 1879,
+  "status": "PASS",
+  "single_native_trace": "D:\\hc\\userFeedback\\cache\\runs\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\frozen\\trajectory-original.jsonl",
+  "trace_sha256": "9a413d06976c7427b59285cb1a2df2973ffc90fd523b7f7ef37fa70a458d49c8",
+  "session_id": "06d76c67-1dd0-41e6-94d9-16907b842174",
+  "prompt_id": "0aa27e6c-a84c-47bf-83e8-fe916175dba8",
+  "exact_single_prompt": true,
+  "native_models": [
+    "auto_model/urm"
+  ],
+  "native_efforts": [
+    "high"
+  ],
+  "three_explicit_high_settings": true,
+  "native_success": true,
+  "frozen_files_unchanged": true,
+  "private_reasoning_excluded": true,
+  "event_counts": {
+    "queue-operation": 2,
+    "user": 60,
+    "attachment": 64,
+    "atis-latch": 19,
+    "assistant": 99,
+    "last-prompt": 19
+  }
+}

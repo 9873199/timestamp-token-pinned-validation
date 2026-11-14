@@ -1,0 +1,18 @@
+完成。所有改动都在仓库内，44 个离线测试全部通过（42 个新严格模式测试 + 2 个原有离线测试，联网测试未触碰）。
+
+## 改动摘要
+
+**`rfc3161ng/api.py`** — 新增 `check_timestamp_strict(tst, certificate, data=None, digest=None, hashname='sha256', nonce=None, policy=None)` 直接验证入口，把"签名能验过"和"这是指定 TSA 给这份文件出的时间戳"真正绑定：
+
+- **结构绑定**：外层 ContentInfo 必须是 id-signedData，封装内容类型必须是 id-ct-TSTInfo，且恰好一个 SignerInfo；SignerIdentifier 的 issuer/serial 必须与固定证书逐字节一致
+- **签名属性**：authenticatedAttributes 必须存在，且恰好各一份单值 contentType（= id-ct-TSTInfo）和单值 messageDigest（= 封装内容摘要）；缺项、重复、多值、错类型都拒绝——签名实际验证的是重建的 SET OF 属性 DER
+- **证书授权**（固定证书授权，不信任 token 内附带证书）：genTime 时有效、EKU 必须 critical 且仅含 id-kp-timeStamping、有 KeyUsage 时必须含 digitalSignature、CA 证书拒绝
+- **算法白名单**：只接受 RSA PKCS#1 v1.5 + SHA-256/384/512（含 `rsaEncryption` 和 `sha*WithRSAEncryption` 两种 OID 风格，且 digestAlgorithm 必须一致），其他算法（PSS、ECDSA、SHA-1 等）明确报错而非猜测验证
+- **请求绑定**：nonce、messageImprint 算法/长度/值、policy OID 与请求逐项对上
+- **DER 完整消耗**：token、eContent、TSTInfo、属性值每层都要求无尾随数据
+
+**`RemoteTimestamper(strict=True)`** — 显式开启后 `check()`/`check_response()` 走同一套严格规则（含 `return_tsr=True` 路径），strict 模式默认 hash 提升为 sha256，未配置固定证书时直接报错；不传 `strict` 时行为完全不变。
+
+**`tests/test_strict.py`** — 全程离线：本地生成 RSA 密钥和自签 TSA 证书（内存中，不落盘、不输出私钥），手工拼装 CMS。关键设计：反例都用**真实 TSA 私钥有效签名**，证明拒绝的是授权/结构问题而非签名损坏；攻击者重签的反例额外用旧 `check_timestamp` 验证可通过，形成对照。覆盖：三种哈希正控、攻击者重签、双 SignerInfo、缺/重/多值/错值属性、无签名属性、尾随数据（token 层和 eContent 层）、nonce/imprint/policy 不匹配、SHA-1/PSS/不一致算法 OID、CA 证书、EKU 缺失/非 critical/多余、KeyUsage 无 digitalSignature、genTime 时证书未生效/已过期，以及 mock 掉 `requests.post` 的 RemoteTimestamper 严格/旧模式路径。
+
+**`__init__.py`** 导出新入口；**README.rst** 和 **CHANGELOG** 补充了说明。

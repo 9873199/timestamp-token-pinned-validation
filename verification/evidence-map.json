@@ -1,0 +1,75 @@
+{
+  "requirements": [
+    {
+      "requirement": "Pinned TSA authorization and actual signature; issuer/serial,genTime,critical unique timestampEKU,KU,nonCA",
+      "source": "rfc3161ng/api.py _load_pinned_certificate,_check_tsa_certificate,_check_signer_identity",
+      "result": "Independent SHA256/384/512 positives, wrong key/serial,certificate EKU/KU/CA,time negatives pass; model embedded-cert and issuer cases replay pass."
+    },
+    {
+      "requirement": "One signer,CMS/TSTInfo OIDs,exact single contentType/messageDigest,raw content digest,full DER consumption",
+      "source": "api.py _decode_fully,_check_authenticated_attributes,check_timestamp_strict",
+      "result": "15 re-signed negative fixture cases plus nested DER,signature OID checks reject. Malformed attribute fixture rejected by decoder PyAsn1Error; reviewer ValueError-only expectation excluded and corrected focused check passes."
+    },
+    {
+      "requirement": "RSA PKCS1v1.5 SHA256/384/512; reject unsupported/inconsistent algorithms",
+      "source": "api.py _get_signature_hash",
+      "result": "Independent3-hash positives and PSS,SHA1,implied hash mismatch rejection pass; model algorithm cases42-suite replay pass."
+    },
+    {
+      "requirement": "Bind nonce,imprint algorithm/length/value,policy to actual request in direct and Remote modes including return_tsr",
+      "source": "api.py359,502,522,532,555",
+      "result": "Direct binding and constructor-policy paths pass. Per-call override mismatch is accepted in4 combinations: constructorNone or oldPolicy times return_tsrFalse/True. Actual outbound request and signed token policies retained; one root cause, not4 penalties."
+    },
+    {
+      "requirement": "Legacy compatibility,offline actual fixtures,no persistent test private key",
+      "source": "__init__.py,README.rst,tests/test_strict.py",
+      "result": "Legacy positive and model legacy mode tests pass, explicit2 offline upstream tests pass. No publicTSA network tests attempted; keys generated only in memory."
+    }
+  ],
+  "process_issues": [
+    {
+      "native_lines": [
+        111,
+        217,
+        222,
+        258
+      ],
+      "file": "tests/test_strict.py",
+      "lines": [
+        635,
+        644,
+        647,
+        654,
+        668
+      ],
+      "details": "Model writes and runs strict tests; Remote positive/bad-token paths set tsa_policy_id only in constructor. No call-time tsa_policy_id override case. Source check subsequently reads only self.tsa_policy_id."
+    }
+  ],
+  "product_issues": [
+    {
+      "file": "rfc3161ng/api.py",
+      "lines": [
+        502,
+        532,
+        555
+      ],
+      "function": "RemoteTimestamper.__call__/check",
+      "trigger": "constructorNone or old policy, per-call tsa_policy_id=OTHER, independently valid signed response containing POLICY",
+      "result": "Actual outbound request has OTHER but response with POLICY accepted in both return_tsr modes; direct check with explicit OTHER rejects. No arbitrary certificate or signature bypass claimed."
+    }
+  ],
+  "independent_scopes": [
+    "tsa-strict-r1",
+    "tsa-der-rejection-r2"
+  ],
+  "reviewer_errors_excluded": [
+    "Malformed-DER rejection produced PyAsn1Error rather than reviewer-expected ValueError. Original5fail output includes1 excluded reviewer case. Corrected focused case1pass.",
+    "First recording failed actual letter interval0.574498>.5, original retained and re-recorded; no model penalty."
+  ],
+  "source_diversity_review": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\semantic-review.json",
+  "time": "2026-11-14T22:02:40+08:00",
+  "uid": 1879,
+  "frozen_commit": "025a190cefe347d2444f2c732e64d520ab8de381",
+  "native_trace_sha256": "9a413d06976c7427b59285cb1a2df2973ffc90fd523b7f7ef37fa70a458d49c8",
+  "no_model_source_changes_after_freeze": true
+}

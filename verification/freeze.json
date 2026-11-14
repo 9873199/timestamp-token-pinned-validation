@@ -1,0 +1,153 @@
+{
+  "time": "2026-11-14T21:48:23+08:00",
+  "task_id": "uf-20261114-new10-tsa-pinned-strict-verifier",
+  "run_id": "uf-20261114-new10-tsa-pinned-strict-verifier-retry-1",
+  "uid": 1879,
+  "workspace": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\sources\\rfc3161ng",
+  "artifact_directory": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\frozen-artifact",
+  "git_head_after_model": "f9b29640ef9b808647a4c7daa0b14d0d02b473e3",
+  "initial_sha": "f9b29640ef9b808647a4c7daa0b14d0d02b473e3",
+  "trajectory_file": "D:\\hc\\userFeedback\\cache\\runs\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\frozen\\trajectory-original.jsonl",
+  "trajectory_sha256": "9a413d06976c7427b59285cb1a2df2973ffc90fd523b7f7ef37fa70a458d49c8",
+  "session_ids": [
+    "06d76c67-1dd0-41e6-94d9-16907b842174"
+  ],
+  "prompt_ids": [
+    "0aa27e6c-a84c-47bf-83e8-fe916175dba8"
+  ],
+  "user_turns": 1,
+  "prompt_sha256": "bb9be198a89902f4fb6bc61c4963f91c0154cae30a9e894c9b3395f9a36c355c",
+  "frozen_files": [
+    {
+      "path": ".github/FUNDING.yml",
+      "sha256": "ed03511dea00704fbbb8684965956da4a58be46edb771a6ca18ab74321a35852",
+      "bytes": 15
+    },
+    {
+      "path": ".github/workflows/main.yml",
+      "sha256": "2b9ff557615440e205d0a23e41a224b4ab79306ec4bbfbe8d9698e171303ea4a",
+      "bytes": 1259
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "194c773780230d4d11636d8e928641cf15e87c821bc7b58cdde5ece8b2d28a87",
+      "bytes": 1188
+    },
+    {
+      "path": "CHANGELOG",
+      "sha256": "0da1912005b3d57113c73bb34d6f47f9d6755a7f6308a9d3c2ceef5405346c5b",
+      "bytes": 1895
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e143d7e7c519378f6dcdfe8ca559e7c1954a262f36236ee7e8ff5487fcc646c8",
+      "bytes": 1287
+    },
+    {
+      "path": "MANIFEST.in",
+      "sha256": "99a9e7b6df08900c0fc068cbbd4504da3c600ba1b3872936003709017de8c322",
+      "bytes": 114
+    },
+    {
+      "path": "PKG-INFO",
+      "sha256": "24fc486b5c66315eb7f41d30b45f5904b2a0b1b0305428f4ff57a1ccb57a6342",
+      "bytes": 1280
+    },
+    {
+      "path": "README.rst",
+      "sha256": "77456b177ead7d5eb26a945726b61233b983cd53768320719c91b810e0cd7259",
+      "bytes": 4407
+    },
+    {
+      "path": "creating_release.rst",
+      "sha256": "25a9c77141bfd9c0918a2464524dbef229f41fdf846612eb83b99a3283ac243e",
+      "bytes": 834
+    },
+    {
+      "path": "data/certum_certificate.crt",
+      "sha256": "f3d5c522002c274ab9cbe7f2b4aa2154872421178248871bc2dcb7949c40ac00",
+      "bytes": 5472
+    },
+    {
+      "path": "data/e_szigno_test_tsa2.crt",
+      "sha256": "2a890dbd68ba8e89375fd840a04a0fea175abdbb934db3ca6b8bf66583cf1fb0",
+      "bytes": 1770
+    },
+    {
+      "path": "data/fedict.crt",
+      "sha256": "a00e8cd6182c4648cbab4d10c418b5b47e2f116821a9790acc241b5210895739",
+      "bytes": 1033
+    },
+    {
+      "path": "data/freetsa.crt",
+      "sha256": "aaeb619d11a63f75d06d104a926b85c76f8276bd9eae616e82d0db5cc5ff149d",
+      "bytes": 2837
+    },
+    {
+      "path": "data/freetsa_cacert.pem",
+      "sha256": "2151b61137ffa86bf664691ba67e7da0b19f98c758e3d228d5d8ebf27e044438",
+      "bytes": 2833
+    },
+    {
+      "path": "data/redwax-interop-ca.crt",
+      "sha256": "593685a2b4223e2634a74bc86125808e12c0680283ad6c67b44a6e3305c6230d",
+      "bytes": 1041
+    },
+    {
+      "path": "rfc3161ng/__init__.py",
+      "sha256": "5a67a69b73d75d0a9193f0604f9a1709112d1ae3acca4e577d55903090f31b22",
+      "bytes": 1237
+    },
+    {
+      "path": "rfc3161ng/api.py",
+      "sha256": "42cbe2486b381d39227fc2f6268f4c89cdf36dd159ac3fe73f25e3030ee9422c",
+      "bytes": 26488
+    },
+    {
+      "path": "rfc3161ng/constants.py",
+      "sha256": "2779570f3b42749151131b5f5d843c5182786661cafb206929a9361939e23546",
+      "bytes": 677
+    },
+    {
+      "path": "rfc3161ng/types.py",
+      "sha256": "6b6a406f33694519e00db7cffb8afd0591e35ea7cf437ce74f39127b3180c622",
+      "bytes": 7709
+    },
+    {
+      "path": "setup.cfg",
+      "sha256": "2f0fb7490e0c954bedb9ca4e6709f63e7087b20288b523489415ad5793064d95",
+      "bytes": 261
+    },
+    {
+      "path": "setup.py",
+      "sha256": "1edb3fa6ebcb6d98d965aaff4b8295e3e5d20f8705cd036fa250504dca609400",
+      "bytes": 1271
+    },
+    {
+      "path": "spec/schema.asn88",
+      "sha256": "ab75eb315a362798d0abbff744084484ecb3496541a70ab3588bb20a6d0c53cf",
+      "bytes": 4973
+    },
+    {
+      "path": "stdeb.cfg",
+      "sha256": "79af07879ef67ac5c5897fb3efc16444dd6792cde61ec947f1ac10376ad62d0a",
+      "bytes": 73
+    },
+    {
+      "path": "tests/test_api.py",
+      "sha256": "5d9afebebb2205e093f45532369d0294332c773cbe705abb7c7e69faa2e102e8",
+      "bytes": 6438
+    },
+    {
+      "path": "tests/test_strict.py",
+      "sha256": "fae203fdc12c17b4893cdcb617703b040d003b541dde025f7a2bc58bbeab39ec",
+      "bytes": 28206
+    },
+    {
+      "path": "tox.ini",
+      "sha256": "40f7d35a5aabcaecf19301c15ca7798bdf96c07422ce9ca34b93872006cc4931",
+      "bytes": 217
+    }
+  ],
+  "no_postrun_product_changes": true
+}

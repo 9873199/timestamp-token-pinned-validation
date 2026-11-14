@@ -1,0 +1,11 @@
+{
+  "uid": 1879,
+  "original_preserved": true,
+  "issue": "One reviewer assertion restricted malformed DER rejection to ValueError. Actual decoder raised PyAsn1Error and rejected input. Prompt does not require one exception type.",
+  "excluded_from_model_penalty": true,
+  "r1_valid_independent_passes": 46,
+  "r1_confirmed_failures": 4,
+  "r1_reviewer_expectation_errors": 1,
+  "corrected_scope": "Only attribute-trailing rerun with ValueError or PyAsn1Error accepted",
+  "no_frozen_source_edits": true
+}

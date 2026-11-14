@@ -1,0 +1,14 @@
+{
+  "time": "2026-11-14T21:56:40+08:00",
+  "argv": [
+    "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tasks\\rfc3161ng\\env\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "import importlib,json,sys;names=json.loads(sys.argv[1]);print(json.dumps({\"python\":sys.version,\"executable\":sys.executable,\"modules\":{n:importlib.import_module(n).__file__ for n in names}}))",
+    "[\"rfc3161ng\", \"rfc3161ng.api\"]"
+  ],
+  "cwd": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\replay-source",
+  "exit_code": 0,
+  "stdout_log": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\actual-import.stdout.log",
+  "stderr_log": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\evaluation\\uf-20261114-new10-tsa-pinned-strict-verifier-retry-1\\verification\\tsa-der-rejection-r2\\actual-import.stderr.log"
+}

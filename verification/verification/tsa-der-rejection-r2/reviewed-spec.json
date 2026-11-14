@@ -1,0 +1,42 @@
+{
+  "uid": 1879,
+  "run_id": "uf-20261114-new10-tsa-pinned-strict-verifier-retry-1",
+  "reviewed": true,
+  "reviewer": "Codex primary offline CMS contract review",
+  "frozen_trace_sha256": "9a413d06976c7427b59285cb1a2df2973ffc90fd523b7f7ef37fa70a458d49c8",
+  "revision": "tsa-der-rejection-r2",
+  "product_modules": [
+    "rfc3161ng",
+    "rfc3161ng.api"
+  ],
+  "support_files": [
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\acceptance-preparation\\test_tsa_strict_review_r2.py",
+      "path": "test_tsa_strict_review_r2.py",
+      "sha256": "a78b03c529082e827fde099c05d7b850f3d0d38435c84503f70144482a301e3e"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tsa_review_fixtures.py",
+      "path": "tsa_review_fixtures.py",
+      "sha256": "2907b9f055d935dbeaff3efbb067773cdb4f00a9a5aef08cc7637afdf5509681"
+    }
+  ],
+  "commands": [
+    {
+      "name": "der-rejection-corrected",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "{verification}/test_tsa_strict_review_r2.py::test_additional_der_and_algorithms[attribute-trailing]",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 60
+    }
+  ]
+}

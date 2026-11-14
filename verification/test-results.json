@@ -1,0 +1,26 @@
+{
+  "independent_r1_raw": {
+    "passed": 46,
+    "failed": 5,
+    "confirmed_model_failures": 4,
+    "reviewer_expectation_errors_excluded": 1
+  },
+  "focused_corrected_malformed_der": {
+    "passed": 1,
+    "failed": 0
+  },
+  "unique_independent_cases_after_contract_review": {
+    "passed": 47,
+    "failed": 4,
+    "root_causes": 1
+  },
+  "model_added_replay": {
+    "passed": 42,
+    "failed": 0
+  },
+  "explicit_upstream_offline": {
+    "passed": 2,
+    "failed": 0
+  },
+  "not_summed_across_scopes": true
+}

@@ -1,0 +1,76 @@
+{
+  "uid": 1879,
+  "run_id": "uf-20261114-new10-tsa-pinned-strict-verifier-retry-1",
+  "reviewed": true,
+  "reviewer": "Codex primary offline CMS contract review",
+  "frozen_trace_sha256": "9a413d06976c7427b59285cb1a2df2973ffc90fd523b7f7ef37fa70a458d49c8",
+  "revision": "tsa-strict-r1",
+  "product_modules": [
+    "rfc3161ng",
+    "rfc3161ng.api"
+  ],
+  "support_files": [
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\acceptance-preparation\\test_tsa_strict_review.py",
+      "path": "test_tsa_strict_review.py",
+      "sha256": "dec8622a72bd257619ddad5c0cb513724f33318c8402bb02aa9b4839cee7b4d2"
+    },
+    {
+      "source": "D:\\hc\\userFeedback\\cache\\security-ten-20261114-r1\\tsa_review_fixtures.py",
+      "path": "tsa_review_fixtures.py",
+      "sha256": "2907b9f055d935dbeaff3efbb067773cdb4f00a9a5aef08cc7637afdf5509681"
+    }
+  ],
+  "commands": [
+    {
+      "name": "independent-tsa",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "{verification}/test_tsa_strict_review.py",
+        "-s",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 300
+    },
+    {
+      "name": "model-strict",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_strict.py",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 300
+    },
+    {
+      "name": "upstream-offline",
+      "argv": [
+        "{python}",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_api.py::test_encode_decode_timestamp_request",
+        "tests/test_api.py::test_generalized_time_decoding",
+        "-o",
+        "addopts=",
+        "-o",
+        "cache_dir={verification}/pytest-cache"
+      ],
+      "timeout": 300
+    }
+  ]
+}

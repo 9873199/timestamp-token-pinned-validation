@@ -1,0 +1,556 @@
+....................................F.......POLICY_BINDING {"constructor_policy": null, "request_policy": "1.3.6.1.4.1.55555.9.2", "signed_token_policy": "1.3.6.1.4.1.55555.9.1", "return_tsr": false, "accepted": true, "rsa_signature_control": true}
+FPOLICY_BINDING {"constructor_policy": null, "request_policy": "1.3.6.1.4.1.55555.9.2", "signed_token_policy": "1.3.6.1.4.1.55555.9.1", "return_tsr": true, "accepted": true, "rsa_signature_control": true}
+FPOLICY_BINDING {"constructor_policy": "1.3.6.1.4.1.55555.9.1", "request_policy": "1.3.6.1.4.1.55555.9.2", "signed_token_policy": "1.3.6.1.4.1.55555.9.1", "return_tsr": false, "accepted": true, "rsa_signature_control": true}
+FPOLICY_BINDING {"constructor_policy": "1.3.6.1.4.1.55555.9.1", "request_policy": "1.3.6.1.4.1.55555.9.2", "signed_token_policy": "1.3.6.1.4.1.55555.9.1", "return_tsr": true, "accepted": true, "rsa_signature_control": true}
+F...
+================================== FAILURES ===================================
+___________ test_additional_der_and_algorithms[attribute-trailing] ____________
+
+pair = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x0000013FC2464690>, <Certificate(subject=<Name(CN=Offline Generated TSA)>, ...)>)
+mutation = 'attribute-trailing'
+
+    @pytest.mark.parametrize('mutation',['octet-trailing','attribute-trailing','pss','digest-signature-mismatch','imprint-length'])
+    def test_additional_der_and_algorithms(pair,mutation):
+        x=make_token(pair);t,rest=decoder.decode(x['token'],asn1Spec=ts.TimeStampToken());assert not rest
+        si=t['content']['signerInfos'][0]
+        if mutation=='octet-trailing':
+            t['content']['contentInfo']['content']=bytes(t['content']['contentInfo']['content'])+b'\x00'
+        elif mutation=='attribute-trailing':
+            for attr in si['authenticatedAttributes']:
+                if str(attr['type'])==CTYPE: attr['values'][0]=univ.Any(bytes(attr['values'][0])+b'\x00')
+            attrs=univ.SetOf(componentType=rfc2315.Attribute())
+            for attr in si['authenticatedAttributes']: attrs.append(attr)
+            signed=encoder.encode(attrs);sig=pair[0].sign(signed,padding.PKCS1v15(),hashes.SHA256());pair[0].public_key().verify(sig,signed,padding.PKCS1v15(),hashes.SHA256());si['encryptedDigest']=sig
+        elif mutation=='pss': si['digestEncryptionAlgorithm']['algorithm']='1.2.840.113549.1.1.10'
+        elif mutation=='digest-signature-mismatch': si['digestEncryptionAlgorithm']['algorithm']='1.2.840.113549.1.1.13'
+        else:
+            content,_=decoder.decode(bytes(t['content']['contentInfo']['content']),asn1Spec=univ.OctetString());info,_=decoder.decode(bytes(content),asn1Spec=ts.TSTInfo());info['messageImprint']['hashedMessage']=b'x'*31
+            payload=encoder.encode(info);t['content']['contentInfo']['content']=encoder.encode(univ.OctetString(payload))
+            for attr in si['authenticatedAttributes']:
+                if str(attr['type'])=='1.2.840.113549.1.9.4': attr['values'][0]=univ.Any(encoder.encode(univ.OctetString(hashlib.sha256(payload).digest())))
+            attrs=univ.SetOf(componentType=rfc2315.Attribute())
+            for attr in si['authenticatedAttributes']: attrs.append(attr)
+            signed=encoder.encode(attrs);sig=pair[0].sign(signed,padding.PKCS1v15(),hashes.SHA256());pair[0].public_key().verify(sig,signed,padding.PKCS1v15(),hashes.SHA256());si['encryptedDigest']=sig
+        x['token']=encoder.encode(t)
+>       with pytest.raises(ValueError): verify(x)
+                                        ^^^^^^^^^
+
+..\test_tsa_strict_review.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\test_tsa_strict_review.py:17: in verify
+    return ts.check_timestamp_strict(x['token'],**kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rfc3161ng\api.py:405: in check_timestamp_strict
+    tst = _decode_fully(tst, rfc3161ng.TimeStampToken(), 'TimeStampToken')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rfc3161ng\api.py:224: in _decode_fully
+    value, substrate = decoder.decode(data, asn1Spec=asn1_spec)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:2178: in __call__
+    for asn1Object in streamingDecoder:
+                      ^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:2048: in __iter__
+    for asn1Object in self._singleItemDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:818: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:112: in valueDecoder
+    for value in decodeFun(substrate, asn1Spec, tagSet, length, **options):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:818: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:939: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:818: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:939: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:818: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1904: in __call__
+    for value in concreteDecoder.valueDecoder(
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:939: in valueDecoder
+    for component in decodeFun(substrate, componentType, **options):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <pyasn1.codec.der.decoder.SingleItemDecoder object at 0x0000013FC3F8DD30>
+substrate = <_io.BytesIO object at 0x0000013FC3F4FBF0>
+asn1Spec = <AttributeValue schema object, encoding iso-8859-1>
+tagSet = <TagSet object, tags 0:0:0>, length = 48, state = 8, decodeFun = None
+substrateFun = None
+options = {'_nestingLevel': 9, 'asn1Object': <TimeStampToken value object, tagSet=<TagSet object, tags 0:32:16>, subtypeSpec=<Co...ObjectIdentifier value object, tagSet <TagSet object, tags 0:0:6>, payload [1.2.840.113549.1.7.2]>, <NoValue object>]>}
+
+    def __call__(self, substrate, asn1Spec=None,
+                 tagSet=None, length=None, state=stDecodeTag,
+                 decodeFun=None, substrateFun=None,
+                 **options):
+    
+        _nestingLevel = options.get('_nestingLevel', 0)
+    
+        if _nestingLevel > MAX_NESTING_DEPTH:
+            raise error.PyAsn1Error(
+                'ASN.1 structure nesting depth exceeds limit (%d)' % MAX_NESTING_DEPTH
+            )
+    
+        options['_nestingLevel'] = _nestingLevel + 1
+    
+        allowEoo = options.pop('allowEoo', False)
+    
+        if LOG:
+            LOG('decoder called at scope %s with state %d, working with up '
+                'to %s octets of substrate: '
+                '%s' % (debug.scope, state, length, substrate))
+    
+        # Look for end-of-octets sentinel
+        if allowEoo and self.supportIndefLength:
+    
+            for eoo_candidate in readFromStream(substrate, 2, options):
+                if isinstance(eoo_candidate, SubstrateUnderrunError):
+                    yield eoo_candidate
+    
+            if eoo_candidate == EOO_SENTINEL:
+                if LOG:
+                    LOG('end-of-octets sentinel found')
+                yield eoo.endOfOctets
+                return
+    
+            else:
+                substrate.seek(-2, os.SEEK_CUR)
+    
+        tagMap = self._tagMap
+        typeMap = self._typeMap
+        tagCache = self._tagCache
+        tagSetCache = self._tagSetCache
+    
+        value = noValue
+    
+        substrate.markedPosition = substrate.tell()
+    
+        while state is not stStop:
+    
+            if state is stDecodeTag:
+                # Decode tag
+                isShortTag = True
+    
+                for firstByte in readFromStream(substrate, 1, options):
+                    if isinstance(firstByte, SubstrateUnderrunError):
+                        yield firstByte
+    
+                firstOctet = ord(firstByte)
+    
+                try:
+                    lastTag = tagCache[firstOctet]
+    
+                except KeyError:
+                    integerTag = firstOctet
+                    tagClass = integerTag & 0xC0
+                    tagFormat = integerTag & 0x20
+                    tagId = integerTag & 0x1F
+    
+                    if tagId == 0x1F:
+                        isShortTag = False
+                        tagOctetCount = 0
+                        tagId = 0
+    
+                        while True:
+                            for integerByte in readFromStream(substrate, 1, options):
+                                if isinstance(integerByte, SubstrateUnderrunError):
+                                    yield integerByte
+    
+                            if not integerByte:
+                                raise error.SubstrateUnderrunError(
+                                    'Short octet stream on long tag decoding'
+                                )
+    
+                            integerTag = ord(integerByte)
+                            tagOctetCount += 1
+                            if tagOctetCount > MAX_TAG_OCTETS:
+                                raise error.PyAsn1Error(
+                                    'Tag ID octet count exceeds limit (%d)' % (
+                                        MAX_TAG_OCTETS,)
+                                )
+                            tagId <<= 7
+                            tagId |= (integerTag & 0x7F)
+    
+                            if not integerTag & 0x80:
+                                break
+    
+                    lastTag = tag.Tag(
+                        tagClass=tagClass, tagFormat=tagFormat, tagId=tagId
+                    )
+    
+                    if isShortTag:
+                        # cache short tags
+                        tagCache[firstOctet] = lastTag
+    
+                if tagSet is None:
+                    if isShortTag:
+                        try:
+                            tagSet = tagSetCache[firstOctet]
+    
+                        except KeyError:
+                            # base tag not recovered
+                            tagSet = tag.TagSet((), lastTag)
+                            tagSetCache[firstOctet] = tagSet
+                    else:
+                        tagSet = tag.TagSet((), lastTag)
+    
+                else:
+                    tagSet = lastTag + tagSet
+    
+                state = stDecodeLength
+    
+                if LOG:
+                    LOG('tag decoded into %s, decoding length' % tagSet)
+    
+            if state is stDecodeLength:
+                # Decode length
+                for firstOctet in readFromStream(substrate, 1, options):
+                    if isinstance(firstOctet, SubstrateUnderrunError):
+                        yield firstOctet
+    
+                firstOctet = ord(firstOctet)
+    
+                if firstOctet < 128:
+                    length = firstOctet
+    
+                elif firstOctet > 128:
+                    size = firstOctet & 0x7F
+    
+                    if size > MAX_LENGTH_OCTETS:
+                        raise error.PyAsn1Error(
+                            'BER length field size %d exceeds limit (%d)' % (
+                                size, MAX_LENGTH_OCTETS)
+                        )
+    
+                    # encoded in size bytes
+                    for encodedLength in readFromStream(substrate, size, options):
+                        if isinstance(encodedLength, SubstrateUnderrunError):
+                            yield encodedLength
+                    encodedLength = list(encodedLength)
+                    if len(encodedLength) != size:
+                        raise error.SubstrateUnderrunError(
+                            '%s<%s at %s' % (size, len(encodedLength), tagSet)
+                        )
+    
+                    length = 0
+                    for lengthOctet in encodedLength:
+                        length <<= 8
+                        length |= lengthOctet
+                    size += 1
+    
+                else:  # 128 means indefinite
+                    length = -1
+    
+                if length == -1 and not self.supportIndefLength:
+                    raise error.PyAsn1Error('Indefinite length encoding not supported by this codec')
+    
+                state = stGetValueDecoder
+    
+                if LOG:
+                    LOG('value length decoded into %d' % length)
+    
+            if state is stGetValueDecoder:
+                if asn1Spec is None:
+                    state = stGetValueDecoderByTag
+    
+                else:
+                    state = stGetValueDecoderByAsn1Spec
+            #
+            # There're two ways of creating subtypes in ASN.1 what influences
+            # decoder operation. These methods are:
+            # 1) Either base types used in or no IMPLICIT tagging has been
+            #    applied on subtyping.
+            # 2) Subtype syntax drops base type information (by means of
+            #    IMPLICIT tagging.
+            # The first case allows for complete tag recovery from substrate
+            # while the second one requires original ASN.1 type spec for
+            # decoding.
+            #
+            # In either case a set of tags (tagSet) is coming from substrate
+            # in an incremental, tag-by-tag fashion (this is the case of
+            # EXPLICIT tag which is most basic). Outermost tag comes first
+            # from the wire.
+            #
+            if state is stGetValueDecoderByTag:
+                try:
+                    concreteDecoder = tagMap[tagSet]
+    
+                except KeyError:
+                    concreteDecoder = None
+    
+                if concreteDecoder:
+                    state = stDecodeValue
+    
+                else:
+                    try:
+                        concreteDecoder = tagMap[tagSet[:1]]
+    
+                    except KeyError:
+                        concreteDecoder = None
+    
+                    if concreteDecoder:
+                        state = stDecodeValue
+                    else:
+                        state = stTryAsExplicitTag
+    
+                if LOG:
+                    LOG('codec %s chosen by a built-in type, decoding %s' % (concreteDecoder and concreteDecoder.__class__.__name__ or "<none>", state is stDecodeValue and 'value' or 'as explicit tag'))
+                    debug.scope.push(concreteDecoder is None and '?' or concreteDecoder.protoComponent.__class__.__name__)
+    
+            if state is stGetValueDecoderByAsn1Spec:
+    
+                if asn1Spec.__class__ is tagmap.TagMap:
+                    try:
+                        chosenSpec = asn1Spec[tagSet]
+    
+                    except KeyError:
+                        chosenSpec = None
+    
+                    if LOG:
+                        LOG('candidate ASN.1 spec is a map of:')
+    
+                        for firstOctet, v in asn1Spec.presentTypes.items():
+                            LOG('  %s -> %s' % (firstOctet, v.__class__.__name__))
+    
+                        if asn1Spec.skipTypes:
+                            LOG('but neither of: ')
+                            for firstOctet, v in asn1Spec.skipTypes.items():
+                                LOG('  %s -> %s' % (firstOctet, v.__class__.__name__))
+                        LOG('new candidate ASN.1 spec is %s, chosen by %s' % (chosenSpec is None and '<none>' or chosenSpec.prettyPrintType(), tagSet))
+    
+                elif tagSet == asn1Spec.tagSet or tagSet in asn1Spec.tagMap:
+                    chosenSpec = asn1Spec
+                    if LOG:
+                        LOG('candidate ASN.1 spec is %s' % asn1Spec.__class__.__name__)
+    
+                else:
+                    chosenSpec = None
+    
+                if chosenSpec is not None:
+                    try:
+                        # ambiguous type or just faster codec lookup
+                        concreteDecoder = typeMap[chosenSpec.typeId]
+    
+                        if LOG:
+                            LOG('value decoder chosen for an ambiguous type by type ID %s' % (chosenSpec.typeId,))
+    
+                    except KeyError:
+                        # use base type for codec lookup to recover untagged types
+                        baseTagSet = tag.TagSet(chosenSpec.tagSet.baseTag,  chosenSpec.tagSet.baseTag)
+                        try:
+                            # base type or tagged subtype
+                            concreteDecoder = tagMap[baseTagSet]
+    
+                            if LOG:
+                                LOG('value decoder chosen by base %s' % (baseTagSet,))
+    
+                        except KeyError:
+                            concreteDecoder = None
+    
+                    if concreteDecoder:
+                        asn1Spec = chosenSpec
+                        state = stDecodeValue
+    
+                    else:
+                        state = stTryAsExplicitTag
+    
+                else:
+                    concreteDecoder = None
+                    state = stTryAsExplicitTag
+    
+                if LOG:
+                    LOG('codec %s chosen by ASN.1 spec, decoding %s' % (state is stDecodeValue and concreteDecoder.__class__.__name__ or "<none>", state is stDecodeValue and 'value' or 'as explicit tag'))
+                    debug.scope.push(chosenSpec is None and '?' or chosenSpec.__class__.__name__)
+    
+            if state is stDecodeValue:
+                if not options.get('recursiveFlag', True) and not substrateFun:  # deprecate this
+                    def substrateFun(asn1Object, _substrate, _length, _options):
+                        """Legacy hack to keep the recursiveFlag=False option supported.
+    
+                        The decode(..., substrateFun=userCallback) option was introduced in 0.1.4 as a generalization
+                        of the old recursiveFlag=False option. Users should pass their callback instead of using
+                        recursiveFlag.
+                        """
+                        yield asn1Object
+    
+                original_position = substrate.tell()
+    
+                if length == -1:  # indef length
+                    for value in concreteDecoder.indefLenValueDecoder(
+                            substrate, asn1Spec,
+                            tagSet, length, stGetValueDecoder,
+                            self, substrateFun, **options):
+                        if isinstance(value, SubstrateUnderrunError):
+                            yield value
+    
+                else:
+                    for value in concreteDecoder.valueDecoder(
+                            substrate, asn1Spec,
+                            tagSet, length, stGetValueDecoder,
+                            self, substrateFun, **options):
+                        if isinstance(value, SubstrateUnderrunError):
+                            yield value
+    
+                    bytesRead = substrate.tell() - original_position
+                    if not substrateFun and bytesRead != length:
+                        raise PyAsn1Error(
+                            "Read %s bytes instead of expected %s." % (bytesRead, length))
+                    elif substrateFun and bytesRead > length:
+                        # custom substrateFun may be used for partial decoding, reading less is expected there
+                        raise PyAsn1Error(
+                            "Read %s bytes are more than expected %s." % (bytesRead, length))
+    
+                if LOG:
+                   LOG('codec %s yields type %s, value:\n%s\n...' % (
+                       concreteDecoder.__class__.__name__, value.__class__.__name__,
+                       isinstance(value, base.Asn1Item) and value.prettyPrint() or value))
+    
+                state = stStop
+                break
+    
+            if state is stTryAsExplicitTag:
+                if (tagSet and
+                        tagSet[0].tagFormat == tag.tagFormatConstructed and
+                        tagSet[0].tagClass != tag.tagClassUniversal):
+                    # Assume explicit tagging
+                    concreteDecoder = rawPayloadDecoder
+                    state = stDecodeValue
+    
+                else:
+                    concreteDecoder = None
+                    state = self.defaultErrorState
+    
+                if LOG:
+                    LOG('codec %s chosen, decoding %s' % (concreteDecoder and concreteDecoder.__class__.__name__ or "<none>", state is stDecodeValue and 'value' or 'as failure'))
+    
+            if state is stDumpRawValue:
+                concreteDecoder = self.defaultRawDecoder
+    
+                if LOG:
+                    LOG('codec %s chosen, decoding value' % concreteDecoder.__class__.__name__)
+    
+                state = stDecodeValue
+    
+            if state is stErrorCondition:
+>               raise error.PyAsn1Error(
+                    '%s not in asn1Spec: %r' % (tagSet, asn1Spec)
+                )
+E               pyasn1.error.PyAsn1Error: <TagSet object, tags 0:0:0> not in asn1Spec: <AttributeValue schema object, encoding iso-8859-1>
+
+..\..\..\..\..\tasks\rfc3161ng\env\Lib\site-packages\pyasn1\codec\ber\decoder.py:1952: PyAsn1Error
+___________ test_remote_call_override_mismatch_rejected[None-False] ___________
+
+pair = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x0000013FC2464690>, <Certificate(subject=<Name(CN=Offline Generated TSA)>, ...)>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013FC3FC1BF0>
+return_tsr = False, constructor_policy = None
+
+    @pytest.mark.parametrize('return_tsr',[False,True])
+    @pytest.mark.parametrize('constructor_policy',[None,POLICY])
+    def test_remote_call_override_mismatch_rejected(pair,monkeypatch,return_tsr,constructor_policy):
+        x=make_token(pair,policy=POLICY);seen=install(monkeypatch,x)
+        with pytest.raises(ValueError): verify(x,policy=OTHER)
+        c=ts.RemoteTimestamper('https://offline.invalid/',certificate=x['certificate'],strict=True,tsa_policy_id=constructor_policy)
+        accepted=False
+        try: c(data=DATA,nonce=x['nonce'],tsa_policy_id=OTHER,return_tsr=return_tsr);accepted=True
+        except ValueError: pass
+        assert seen==[OTHER]
+        print('POLICY_BINDING '+json.dumps({'constructor_policy':constructor_policy,'request_policy':seen[0],'signed_token_policy':POLICY,'return_tsr':return_tsr,'accepted':accepted,'rsa_signature_control':x['independent_rsa_signature_control']}))
+>       assert not accepted,'Signed token policy differs from actual per-call request'
+E       AssertionError: Signed token policy differs from actual per-call request
+E       assert not True
+
+..\test_tsa_strict_review.py:101: AssertionError
+___________ test_remote_call_override_mismatch_rejected[None-True] ____________
+
+pair = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x0000013FC2464690>, <Certificate(subject=<Name(CN=Offline Generated TSA)>, ...)>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013FC3F76550>
+return_tsr = True, constructor_policy = None
+
+    @pytest.mark.parametrize('return_tsr',[False,True])
+    @pytest.mark.parametrize('constructor_policy',[None,POLICY])
+    def test_remote_call_override_mismatch_rejected(pair,monkeypatch,return_tsr,constructor_policy):
+        x=make_token(pair,policy=POLICY);seen=install(monkeypatch,x)
+        with pytest.raises(ValueError): verify(x,policy=OTHER)
+        c=ts.RemoteTimestamper('https://offline.invalid/',certificate=x['certificate'],strict=True,tsa_policy_id=constructor_policy)
+        accepted=False
+        try: c(data=DATA,nonce=x['nonce'],tsa_policy_id=OTHER,return_tsr=return_tsr);accepted=True
+        except ValueError: pass
+        assert seen==[OTHER]
+        print('POLICY_BINDING '+json.dumps({'constructor_policy':constructor_policy,'request_policy':seen[0],'signed_token_policy':POLICY,'return_tsr':return_tsr,'accepted':accepted,'rsa_signature_control':x['independent_rsa_signature_control']}))
+>       assert not accepted,'Signed token policy differs from actual per-call request'
+E       AssertionError: Signed token policy differs from actual per-call request
+E       assert not True
+
+..\test_tsa_strict_review.py:101: AssertionError
+__ test_remote_call_override_mismatch_rejected[1.3.6.1.4.1.55555.9.1-False] ___
+
+pair = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x0000013FC2464690>, <Certificate(subject=<Name(CN=Offline Generated TSA)>, ...)>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013FC3F76E50>
+return_tsr = False, constructor_policy = '1.3.6.1.4.1.55555.9.1'
+
+    @pytest.mark.parametrize('return_tsr',[False,True])
+    @pytest.mark.parametrize('constructor_policy',[None,POLICY])
+    def test_remote_call_override_mismatch_rejected(pair,monkeypatch,return_tsr,constructor_policy):
+        x=make_token(pair,policy=POLICY);seen=install(monkeypatch,x)
+        with pytest.raises(ValueError): verify(x,policy=OTHER)
+        c=ts.RemoteTimestamper('https://offline.invalid/',certificate=x['certificate'],strict=True,tsa_policy_id=constructor_policy)
+        accepted=False
+        try: c(data=DATA,nonce=x['nonce'],tsa_policy_id=OTHER,return_tsr=return_tsr);accepted=True
+        except ValueError: pass
+        assert seen==[OTHER]
+        print('POLICY_BINDING '+json.dumps({'constructor_policy':constructor_policy,'request_policy':seen[0],'signed_token_policy':POLICY,'return_tsr':return_tsr,'accepted':accepted,'rsa_signature_control':x['independent_rsa_signature_control']}))
+>       assert not accepted,'Signed token policy differs from actual per-call request'
+E       AssertionError: Signed token policy differs from actual per-call request
+E       assert not True
+
+..\test_tsa_strict_review.py:101: AssertionError
+___ test_remote_call_override_mismatch_rejected[1.3.6.1.4.1.55555.9.1-True] ___
+
+pair = (<cryptography.hazmat.bindings._rust.openssl.rsa.RSAPrivateKey object at 0x0000013FC2464690>, <Certificate(subject=<Name(CN=Offline Generated TSA)>, ...)>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013FC40BCF50>
+return_tsr = True, constructor_policy = '1.3.6.1.4.1.55555.9.1'
+
+    @pytest.mark.parametrize('return_tsr',[False,True])
+    @pytest.mark.parametrize('constructor_policy',[None,POLICY])
+    def test_remote_call_override_mismatch_rejected(pair,monkeypatch,return_tsr,constructor_policy):
+        x=make_token(pair,policy=POLICY);seen=install(monkeypatch,x)
+        with pytest.raises(ValueError): verify(x,policy=OTHER)
+        c=ts.RemoteTimestamper('https://offline.invalid/',certificate=x['certificate'],strict=True,tsa_policy_id=constructor_policy)
+        accepted=False
+        try: c(data=DATA,nonce=x['nonce'],tsa_policy_id=OTHER,return_tsr=return_tsr);accepted=True
+        except ValueError: pass
+        assert seen==[OTHER]
+        print('POLICY_BINDING '+json.dumps({'constructor_policy':constructor_policy,'request_policy':seen[0],'signed_token_policy':POLICY,'return_tsr':return_tsr,'accepted':accepted,'rsa_signature_control':x['independent_rsa_signature_control']}))
+>       assert not accepted,'Signed token policy differs from actual per-call request'
+E       AssertionError: Signed token policy differs from actual per-call request
+E       assert not True
+
+..\test_tsa_strict_review.py:101: AssertionError
+=========================== short test summary info ===========================
+FAILED ..\test_tsa_strict_review.py::test_additional_der_and_algorithms[attribute-trailing]
+FAILED ..\test_tsa_strict_review.py::test_remote_call_override_mismatch_rejected[None-False]
+FAILED ..\test_tsa_strict_review.py::test_remote_call_override_mismatch_rejected[None-True]
+FAILED ..\test_tsa_strict_review.py::test_remote_call_override_mismatch_rejected[1.3.6.1.4.1.55555.9.1-False]
+FAILED ..\test_tsa_strict_review.py::test_remote_call_override_mismatch_rejected[1.3.6.1.4.1.55555.9.1-True]
+5 failed, 46 passed in 3.36s
